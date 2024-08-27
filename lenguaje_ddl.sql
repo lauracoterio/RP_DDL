@@ -15,9 +15,9 @@ CREATE TABLE tbl_productos (
 
 
 --TBL EMPLEADO-->
-CREATE DATABASE bd_empleados;
-USE bd_empleados;
-CREATE TABLE tbl_empleados (
+CREATE DATABASE bd_empleados1;
+USE bd_empleados1;
+CREATE TABLE tbl_empleados1 (
     id INT NOT NULL AUTO_INCREMENT,
     Nombres VARCHAR (20) NOT NULL,
     Apellidos VARCHAR(30) NOT NULL,
@@ -31,22 +31,21 @@ CREATE TABLE tbl_empleados (
     PRIMARY KEY (id)
 )
 --TBL CIUDAD-->
-CREATE TABLE tbl_ciudad (
+CREATE TABLE tbl_ciudad1 (
     Codigo_postal INT (10) NOT NULL,
     Nombre VARCHAR (25) NOT NULL,
     Departamento VARCHAR (25) NOT NULL,
     PRIMARY KEY (Codigo_postal)
 )
 --TBL DEPARTAMENTO-->
-CREATE TABLE tbl_departamento (
+CREATE TABLE tbl_departamento1 (
     id_departamento INT (10) NOT NULL,
     Nombre VARCHAR (25) NOT NULL,
-    Departamento VARCHAR (25) NOT NULL,
     PRIMARY KEY (id_departamento)
 )
 
 --TBL GÉNERO-->
-CREATE TABLE tbl_genero (
+CREATE TABLE tbl_genero1 (
     id_genero INT (10) NOT NULL,
     Nombre VARCHAR (25) NOT NULL,
     PRIMARY KEY (id_genero)
@@ -73,7 +72,7 @@ CREATE TABLE tbl_area (
 --TBL ESTUDIANTE-->
 CREATE DATABASE bd_estudiantes;
 USE bd_estudiantes;
-CREATE TABLE tbl_empleados (
+CREATE TABLE tbl_estudiante (
     id INT NOT NULL AUTO_INCREMENT,
     Nombres VARCHAR (20) NOT NULL,
     Apellidos VARCHAR(30) NOT NULL,
@@ -120,14 +119,14 @@ CREATE TABLE tbl_productos2 (
     PRIMARY KEY (id)
 )
 --TBL SUBCATEGORÍA-->
-CREATE TABLE tbl_subcategoria (
+CREATE TABLE tbl_subcategoria1 (
     id_subcategoria INT (10) NOT NULL,
     Nombre VARCHAR (25) NOT NULL,
     Categoria VARCHAR (25) NOT NULL,
     PRIMARY KEY (id_subcategoria)
 )
 --TBL CATEGORÍA-->
-CREATE TABLE tbl_categoria (
+CREATE TABLE tbl_categoria1 (
     id_categoria INT (10) NOT NULL,
     Nombre VARCHAR (25) NOT NULL,
     PRIMARY KEY (id_categoria)
@@ -167,7 +166,7 @@ CREATE TABLE tbl_factura (
     PRIMARY KEY (id)
 )
 --TBL CLIENTE-->
-CREATE TABLE tbl_cliente (
+CREATE TABLE tbl_cliente1 (
     identificacion INT (10) NOT NULL,
     Nombres VARCHAR (25) NOT NULL,
     Apellidos VARCHAR (25) NOT NULL,
@@ -206,4 +205,142 @@ CREATE TABLE tbl_unidad_medida (
     id_unidad_medida INT (10) NOT NULL,
     Nombre VARCHAR (25) NOT NULL,
     PRIMARY KEY (id_unidad_medida)
+)
+
+
+
+
+
+--TBL SUPERMERCADO-->
+CREATE DATABASE bd_supermercado;
+USE bd_supermercado;
+CREATE TABLE tbl_supermercado (
+    Codigo_supermercado INT NOT NULL AUTO_INCREMENT,
+    Sede VARCHAR (20) NOT NULL AUTO_INCREMENT,
+    Nombre_supermercado VARCHAR (30) NOT NULL,
+    Dirección VARCHAR (30) NOT NULL,
+    Bodega VARCHAR (20) NOT NULL,
+    Cliente VARCHAR (20) NOT NULL,
+     PRIMARY KEY (Codigo_supermercado)
+)
+
+--TBL SEDE-->
+CREATE TABLE tbl_sede(
+    Codigo_sede INT NOT NULL AUTO_INCREMENT,
+    Empleados VARCHAR (30) NOT NULL,
+    Cantidad_empleados INT (10) NOT NULL,
+    Ingresos_mensuales DECIMAL (11,2) NOT NULL,
+    Ingresos_anuales DECIMAL (11,2) NOT NULL,
+    Dirección VARCHAR (30) NOT NULL,
+    Bodega VARCHAR (20) NOT NULL,
+    Ciudad VARCHAR (20) NOT NULL,
+    Clientes VARCHAR (20) NOT NULL,
+    Teléfono_corporativo INT (11) NOT NULL,
+    Correo_corporativo VARCHAR(11) NOT NULL,
+    PRIMARY KEY (Codigo_sede)
+)
+
+--TBL EMPLEADO-->
+    Identificacion INT (12) NOT NULL,
+    Nombres VARCHAR (25) NOT NULL,
+    Apellidos VARCHAR (25) NOT NULL,
+    Género VARCHAR (12) NOT NULL,
+    Correo_personal VARCHAR (30) NOT NULL,
+    Teléfono_personal INT (20) NOT NULL,
+    PRIMARY KEY (Identificacion)
+)
+--TBL GÉNERO-->
+CREATE TABLE tbl_genero2(
+    id_genero INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    PRIMARY KEY (id_genero)
+)
+
+--TBL CIUDAD-->
+CREATE TABLE tbl_ciudad8 (
+    Codigo_postal INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    Departamento VARCHAR (25) NOT NULL,
+    PRIMARY KEY (Codigo_postal)
+)
+--TBL DEPARTAMENTO-->
+CREATE TABLE tbl_departamento8 (
+    id_departamento INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    PRIMARY KEY (id_departamento)
+)
+
+--TBL BODEGA-->
+CREATE TABLE tbl_bodega(  
+    Codigo_bodega INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    Ciudad VARCHAR (25) NOT NULL,
+    Producto VARCHAR (20) NOT NULL,
+   PRIMARY KEY (Codigo_bodega)
+)
+--TBL CIUDAD-->
+CREATE TABLE tbl_ciudad9 (
+    Codigo_postal INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    Departamento VARCHAR (25) NOT NULL,
+    PRIMARY KEY (Codigo_postal)
+)
+--TBL DEPARTAMENTO-->
+CREATE TABLE tbl_departamento9 (
+    id_departamento INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    PRIMARY KEY (id_departamento)
+)
+--TBL PRODUCTO-->
+CREATE TABLE tbl_producto (
+    Codigo_barras INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    Subcategoria TEXT (20) NOT NULL,
+    Unidad_medida VARCHAR (15) NOT NULL,
+    Precio DECIMAL (11,2) NOT NULL,
+    Existencia VARCHAR (20) NOT NULL,
+    PRIMARY KEY (Codigo_barras)
+)
+--TBL SUBCATEGORÍA-->
+CREATE TABLE tbl_subcategoria (
+    id_subcategoria INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    Categoria VARCHAR (25) NOT NULL,
+    PRIMARY KEY (id_subcategoria)
+)
+--TBL CATEGORÍA-->
+CREATE TABLE tbl_categoria (
+    id_categoria INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    PRIMARY KEY (id_categoria)
+)
+
+--TBL CLIENTE-->
+CREATE TABLE tbl_cliente (
+    Identificacion INT (12) NOT NULL,
+    Nombres VARCHAR (25) NOT NULL,
+    País TEXT (25) NOT NULL,
+    Ciudad TEXT (25) NOT NULL,
+    Correo_personal VARCHAR (30) NOT NULL,
+    Teléfono_personal INT (20) NOT NULL,
+    PRIMARY KEY (Identificacion)
+)
+--TBL PAÍS-->
+CREATE TABLE tbl_país0 (
+    id_país INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    PRIMARY KEY (id_país)
+)
+--TBL CIUDAD-->
+CREATE TABLE tbl_ciudad0 (
+    Codigo_postal INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    Departamento VARCHAR (25) NOT NULL,
+    PRIMARY KEY (Codigo_postal)
+)
+--TBL DEPARTAMENTO-->
+CREATE TABLE tbl_departamento0 (
+    id_departamento INT (10) NOT NULL,
+    Nombre VARCHAR (25) NOT NULL,
+    PRIMARY KEY (id_departamento)
 )
