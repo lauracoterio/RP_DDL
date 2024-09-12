@@ -365,16 +365,3 @@ CREATE TABLE tbl_supermercado(
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
