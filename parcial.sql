@@ -95,13 +95,13 @@ CREATE DATABASE bd_matricula_u;
 USE bd_matricula_u;
 
 
-CREATE TABLE tbl_facultad (
+CREATE TABLE tbl_facultad (--l
     id_facultad INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(20) NOT NULL,
     PRIMARY KEY (id_facultad)
 )
 
-CREATE TABLE tbl_carrera (
+CREATE TABLE tbl_carrera (--l
     id_carrera INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(30) NOT NULL,
     id_facultad INT NOT NULL, 
@@ -109,7 +109,7 @@ CREATE TABLE tbl_carrera (
     FOREIGN KEY (id_facultad) REFERENCES tbl_facultad(id_facultad)
 )
 
-CREATE TABLE tbl_curso (
+CREATE TABLE tbl_curso (--l
     cod_curso INT NOT NULL AUTO_INCREMENT,
     curso VARCHAR(20) NOT NULL,
     costo_curso DECIMAL(11,2) NOT NULL,
@@ -118,7 +118,7 @@ CREATE TABLE tbl_curso (
     FOREIGN KEY (id_carrera) REFERENCES tbl_carrera (id_carrera)
 )
 
-CREATE TABLE tbl_docente (
+CREATE TABLE tbl_docente (--l
     cod_docente INT NOT NULL AUTO_INCREMENT,
     nombre_docente VARCHAR(20) NOT NULL,
     cod_curso INT NOT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE tbl_docente (
     FOREIGN KEY (cod_curso) REFERENCES tbl_curso (cod_curso)
 )
 
-CREATE TABLE tbl_depto_residencia (
+CREATE TABLE tbl_depto_residencia (--l
     id_depto_residencia INT NOT NULL AUTO_INCREMENT,
     departamento VARCHAR(20) NOT NULL,
     PRIMARY KEY (id_depto_residencia)
@@ -140,19 +140,19 @@ CREATE TABLE tbl_residencia (
     FOREIGN KEY (id_depto_residencia) REFERENCES tbl_depto_residencia (id_depto_residencia)
 )
 
-CREATE TABLE tbl_genero (
+CREATE TABLE tbl_genero (--l
     id_genero INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(10) NOT NULL,
     PRIMARY KEY (id_genero)
 )
 
-CREATE TABLE tbl_depto_sede (
+CREATE TABLE tbl_depto_sede (--l
     id_departamento INT NOT NULL AUTO_INCREMENT,
     departamento VARCHAR(20) NOT NULL,
     PRIMARY KEY (id_departamento)
 )
 
-CREATE TABLE tbl_sede_u (
+CREATE TABLE tbl_sede_u (--l
     cod_universidad INT NOT NULL AUTO_INCREMENT,
     ciudad VARCHAR(20) NOT NULL,
     id_departamento INT NOT NULL,
@@ -161,7 +161,7 @@ CREATE TABLE tbl_sede_u (
 )
 
 
-CREATE TABLE tbl_estudiante (
+CREATE TABLE tbl_estudiante ( --l
     id_estudiante INT NOT NULL AUTO_INCREMENT,
     nombres VARCHAR(20) NOT NULL,
     apellidos VARCHAR(20) NOT NULL,
@@ -177,7 +177,7 @@ CREATE TABLE tbl_estudiante (
     FOREIGN KEY (cod_docente) REFERENCES tbl_docente (cod_docente)
 )
 
-CREATE TABLE tbl_matricula (
+CREATE TABLE tbl_matricula (--l
     id_matricula INT NOT NULL AUTO_INCREMENT,
     id_estudiante INT NOT NULL,
     cod_universidad INT NOT NULL,

@@ -10,12 +10,12 @@ CREATE TABLE tbl_productos (
     PRIMARY KEY (id)
 )
 
---Base de datos empleado-->
+--Base de datos empleado--> L
 CREATE DATABASE bd_empleados;
 USE bd_empleados;
 
 
-CREATE TABLE tbl_genero(
+CREATE TABLE tbl_genero_em(
     codigo_genero INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     PRIMARY KEY (codigo_genero)
@@ -36,18 +36,18 @@ CREATE TABLE tbl_cargo(
 )
 
 
-CREATE TABLE tbl_departamento(
+CREATE TABLE tbl_departamento_em(
     id_departamento INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     PRIMARY KEY (id_departamento)
 )
 
-CREATE TABLE tbl_ciudad(
+CREATE TABLE tbl_ciudad_em(
     codigo_postal INT (5) NOT NULL,
     nombre VARCHAR (30) NOT NULL,
     id_departamento INT NOT NULL,
     PRIMARY KEY (codigo_postal),
-    FOREIGN KEY (id_departamento) REFERENCES tbl_departamento (id_departamento)
+    FOREIGN KEY (id_departamento) REFERENCES tbl_departamento_em (id_departamento)
 )
 
 CREATE TABLE tbl_empleado (
@@ -65,8 +65,8 @@ CREATE TABLE tbl_empleado (
     telefono_celular INT (10) NOT NULL,
     telefono_fijo INT (10) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY(codigo_postal) REFERENCES tbl_ciudad (codigo_postal),
-    FOREIGN KEY(codigo_genero) REFERENCES tbl_genero (codigo_genero),
+    FOREIGN KEY(codigo_postal) REFERENCES tbl_ciudad_em (codigo_postal),
+    FOREIGN KEY(codigo_genero) REFERENCES tbl_genero_em (codigo_genero),
     FOREIGN KEY(id_cargo) REFERENCES tbl_cargo (id_cargo)
 )
 
@@ -74,32 +74,32 @@ CREATE TABLE tbl_empleado (
 
 
 
---/base de datos estudiantes--
-CREATE DATABASE bd_estudiante;
+--/base de datos estudiantes-- L
+CREATE DATABASE bd_estudiante; 
 USE bd_estudiante;
 
 
-CREATE TABLE tbl_genero(
+CREATE TABLE tbl_genero_e(
     id_genero INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(20) NOT NULL,
     PRIMARY KEY (id_genero)
 )
 
-CREATE TABLE tbl_facultad(
+CREATE TABLE tbl_facultad_e(
     id_facultad INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(20) NOT NULL,
     PRIMARY KEY(id_facultad)
 )
 
-CREATE TABLE tbl_carrera(
+CREATE TABLE tbl_carrera_e(
     id_carrera INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(30) NOT NULL,
     id_facultad INT NOT NULL, 
     PRIMARY KEY (id_carrera),
-    FOREIGN KEY (id_facultad) REFERENCES tbl_facultad(id_facultad)
+    FOREIGN KEY (id_facultad) REFERENCES tbl_facultad_e(id_facultad)
 )
 
-CREATE TABLE tbl_estudiantes(
+CREATE TABLE tbl_estudiantes_e(
     identificacion INT (10) NOT NULL,
     nombres VARCHAR(30) NOT NULL,
     apellidos VARCHAR(20) NOT NULL,
@@ -111,8 +111,8 @@ CREATE TABLE tbl_estudiantes(
     fecha_de_ingreso DATE NOT NULL,
     saldo_en_deuda DECIMAL(12,2) NOT NULL,
     PRIMARY KEY (identificacion),
-    FOREIGN KEY (id_carrera) REFERENCES tbl_carrera(id_carrera),
-    FOREIGN KEY (id_genero) REFERENCES tbl_genero(id_genero)
+    FOREIGN KEY (id_carrera) REFERENCES tbl_carrera_e(id_carrera),
+    FOREIGN KEY (id_genero) REFERENCES tbl_genero_e(id_genero)
 )
 
 
@@ -122,26 +122,26 @@ CREATE TABLE tbl_estudiantes(
 CREATE DATABASE bd_productos7;
 USE bd_productos7;
 
-CREATE TABLE tbl_vendedor(
+CREATE TABLE tbl_vendedor( --l
     identificacion_vendedor INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     apellidos VARCHAR (30) NOT NULL,
     PRIMARY KEY (identificacion_vendedor)
 )
 
-CREATE TABLE tbl_unidad_de_medida(
+CREATE TABLE tbl_unidad_de_medida( --l
     id_unidad_de_medida INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     PRIMARY KEY (id_unidad_de_medida)
 )
 
-CREATE TABLE tbl_categoria(
+CREATE TABLE tbl_categoria( --l
     id_categoria INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     PRIMARY KEY (id_categoria)
 )
 
-CREATE TABLE tbl_sub_categoria(
+CREATE TABLE tbl_sub_categoria( --l
     id_sub_categoria INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     id_categoria INT NOT NULL,
@@ -149,7 +149,7 @@ CREATE TABLE tbl_sub_categoria(
     FOREIGN KEY (id_categoria) REFERENCES tbl_categoria (id_categoria)
 )
 
-CREATE TABLE tbl_productos(
+CREATE TABLE tbl_productos( --L
 codigo_producto INT NOT NULL AUTO_INCREMENT,
 nombre VARCHAR (30) NOT NULL,
 precio_costo DECIMAL(10,2) NOT NULL,
@@ -177,7 +177,7 @@ FOREIGN KEY (identificacion_vendedor) REFERENCES tbl_vendedor (identificacion_ve
 CREATE DATABASE bd_factura7;
 USE bd_factura7;
 
-CREATE TABLE tbl_cliente(
+CREATE TABLE tbl_cliente( --l
     identificacion INT (12) NOT NULL ,
     nombre VARCHAR (30) NOT NULL,
     apellidos VARCHAR (30) NOT NULL,
@@ -186,19 +186,19 @@ CREATE TABLE tbl_cliente(
     PRIMARY KEY (identificacion)
 )
 
-CREATE TABLE tbl_unidad_de_medida(
+CREATE TABLE tbl_unidad_de_medida( --l
     id_unidad_de_medida INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     PRIMARY KEY (id_unidad_de_medida)
 )
 
-CREATE TABLE tbl_categoria(
+CREATE TABLE tbl_categoria( --l
     id_categoria INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     PRIMARY KEY (id_categoria)
 )
 
-CREATE TABLE tbl_sub_categoria(
+CREATE TABLE tbl_sub_categoria( --l 
     id_sub_categoria INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     id_categoria INT NOT NULL,
@@ -206,7 +206,7 @@ CREATE TABLE tbl_sub_categoria(
     FOREIGN KEY (id_categoria) REFERENCES tbl_categoria (id_categoria)
 )
 
-CREATE TABLE tbl_producto(
+CREATE TABLE tbl_producto( --l
     codigo_producto INT NOT NULL AUTO_INCREMENT,
     nombres VARCHAR (30) NOT NULL,
     id_sub_categoria INT NOT NULL,
@@ -217,7 +217,7 @@ CREATE TABLE tbl_producto(
     FOREIGN KEY (id_unidad_de_medida) REFERENCES tbl_unidad_de_medida(id_unidad_de_medida)
 )
 
-CREATE TABLE tbl_factura(
+CREATE TABLE tbl_factura( --l
     codigo_factura INT NOT NULL AUTO_INCREMENT,
     fecha  DATE,
     identificacion INT (12) NOT NULL,
@@ -243,26 +243,26 @@ CREATE TABLE tbl_factura(
 CREATE DATABASE bd_supermercado7;
 USE bd_supermercado7;
 
- CREATE TABLE tbl_depto(
+ CREATE TABLE tbl_depto( 
     cod_depto INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (25) NOT NULL,
     PRIMARY KEY (cod_depto)
 )
-CREATE TABLE tbl_ciudad3(
+CREATE TABLE tbl_ciudad3( --l
     codigo_postal VARCHAR (7) NOT NULL,
     nombre VARCHAR (25) NOT NULL,
     cod_depto INT NOT NULL,
     PRIMARY KEY (codigo_postal),
     FOREIGN KEY (cod_depto) REFERENCES tbl_depto(cod_depto)
  )
- CREATE TABLE tbl_pais(
+ CREATE TABLE tbl_pais(--l
     codigo_pais INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (25) NOT NULL,
     codigo_postal VARCHAR (7) NOT NULL,
     PRIMARY KEY (codigo_pais),
     FOREIGN KEY (codigo_postal) REFERENCES tbl_ciudad3(codigo_postal)
  )
- CREATE TABLE tbl_cliente(
+ CREATE TABLE tbl_cliente( --l
     id_cliente INT (12) NOT NULL,
     nombre VARCHAR (25) NOT NULL,
     codigo_pais INT NOT NULL,
@@ -272,12 +272,12 @@ CREATE TABLE tbl_ciudad3(
     FOREIGN KEY (codigo_pais) REFERENCES tbl_pais(codigo_pais)
  )
 
- CREATE TABLE tbl_genero(
+ CREATE TABLE tbl_genero( --l
     id_genero INT NOT NULL AUTO_INCREMENT,
     Nombre VARCHAR (15) NOT NULL,
     PRIMARY KEY (id_genero)
  )
-CREATE TABLE tbl_empleados (
+CREATE TABLE tbl_empleados ( --l
     id_empleados INT (10) NOT NULL,
     nombre VARCHAR (30) NOT NULL,
     apellidos VARCHAR (30) NOT NULL,
@@ -288,19 +288,19 @@ CREATE TABLE tbl_empleados (
     FOREIGN KEY (id_genero) REFERENCES tbl_genero (id_genero)
 )
 
- CREATE TABLE tbl_categoria(
+ CREATE TABLE tbl_categoria( --l
     id_categoria INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     PRIMARY KEY (id_categoria)
 )
-CREATE TABLE tbl_sub_categoria(
+CREATE TABLE tbl_sub_categoria( --l
     id_sub_categoria INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     id_categoria INT NOT NULL,
     PRIMARY KEY (id_sub_categoria),
     FOREIGN KEY (id_categoria) REFERENCES tbl_categoria (id_categoria)
 )
-CREATE TABLE tbl_producto(
+CREATE TABLE tbl_producto(--l
     codigo_producto INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (20) NOT NULL,
     id_sub_categoria INT NOT NULL,
@@ -309,12 +309,12 @@ CREATE TABLE tbl_producto(
     FOREIGN KEY (id_sub_categoria) REFERENCES tbl_sub_categoria (id_sub_categoria)
  )
 
-CREATE TABLE tbl_departamento(
+CREATE TABLE tbl_departamento( --l
     codigo_departamento INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR (30) NOT NULL,
     PRIMARY KEY (codigo_departamento)
 )
-CREATE TABLE tbl_ciudad(
+CREATE TABLE tbl_ciudad(--l
     codigo_postal VARCHAR (5) NOT NULL, /*no va autoincermentado*/
     nombre VARCHAR (30) NOT NULL,
     codigo_departamento INT NOT NULL,
@@ -322,7 +322,7 @@ CREATE TABLE tbl_ciudad(
     FOREIGN KEY (codigo_departamento) REFERENCES tbl_departamento (codigo_departamento)
 )
 
- CREATE TABLE tbl_bodega(
+ CREATE TABLE tbl_bodega( --l
     cod_bodega INT NOT NULL AUTO_INCREMENT,
     codigo_postal VARCHAR (5) NOT NULL,
     nombre VARCHAR (15) NOT NULL,
@@ -332,7 +332,7 @@ CREATE TABLE tbl_ciudad(
     FOREIGN KEY (codigo_producto) REFERENCES tbl_producto (codigo_producto)
 )
 
-CREATE TABLE tbl_sede(
+CREATE TABLE tbl_sede(--l
     codigo_sede INT NOT NULL AUTO_INCREMENT,
     direccion VARCHAR (20) NOT NULL,
     codigo_postal VARCHAR (5) NOT NULL,
@@ -351,7 +351,7 @@ CREATE TABLE tbl_sede(
     FOREIGN KEY (id_empleados) REFERENCES tbl_empleados (id_empleados)
 )
 
-CREATE TABLE tbl_supermercado(
+CREATE TABLE tbl_supermercado(--l
     codigo_supermercado INT NOT NULL AUTO_INCREMENT,
     nombre_supermercado VARCHAR (20) NOT NULL,
     codigo_sede INT NOT NULL,
