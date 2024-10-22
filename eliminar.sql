@@ -8,7 +8,7 @@ MODIFY nombre_columna nuevo_tipo_dato;
 
 --renimbrar una columna de una tabla
 ALTER TABLE nombre_tabla
-CHANGE nombre_culumna_antiguo_nombre nombre_columna_nuevo tipo_dato;
+CHANGE nombre_culumna_antiguo_nombre nombre_columna_ nuevo_tipo_dato;
 
 --Eliminar una columna de una tabla
 ALTER TABLE nombre_tabla
